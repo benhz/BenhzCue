@@ -44,6 +44,33 @@ struct SettingsView: View {
                     }
                 }
 
+                // Security Settings
+                Section(header: Text("Security")) {
+                    HStack {
+                        Text("Biometric Login")
+                        Spacer()
+                        Text(viewModel.biometricTypeName)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+
+                    Toggle("Require authentication on launch", isOn: $viewModel.requireAuth)
+                        .onChange(of: viewModel.requireAuth) { newValue in
+                            UserDefaults.standard.set(newValue, forKey: "requireAuthentication")
+                        }
+
+                    Button(action: {
+                        appState.logout()
+                        dismiss()
+                    }) {
+                        HStack {
+                            Image(systemName: "rectangle.portrait.and.arrow.right")
+                            Text("Logout")
+                        }
+                        .foregroundColor(.red)
+                    }
+                }
+
                 // Permissions Status
                 Section(header: Text("Permissions")) {
                     HStack {
@@ -182,6 +209,9 @@ class SettingsViewModel: ObservableObject {
     @Published var calendarStatus = "Not Determined"
     @Published var remindersStatus = "Not Determined"
 
+    @Published var biometricTypeName = "生物识别"
+    @Published var requireAuth = true
+
     @Published var showingSuccess = false
     @Published var showingError = false
     @Published var successMessage: String?
@@ -189,6 +219,12 @@ class SettingsViewModel: ObservableObject {
 
     init() {
         loadSettings()
+        loadBiometricInfo()
+    }
+
+    func loadBiometricInfo() {
+        biometricTypeName = BiometricAuthService.shared.getBiometricTypeName()
+        requireAuth = UserDefaults.standard.bool(forKey: "requireAuthentication")
     }
 
     func loadSettings() {

@@ -50,17 +50,19 @@
     </array>
 
     <!-- Privacy Permissions -->
+    <key>NSFaceIDUsageDescription</key>
+    <string>使用 Face ID 验证您的身份以保护您的日程数据安全。</string>
     <key>NSCameraUsageDescription</key>
-    <string>We need camera access to capture event posters and schedules for parsing.</string>
+    <string>需要相机权限以拍摄包含日程信息的海报或日历。</string>
     <key>NSPhotoLibraryUsageDescription</key>
-    <string>We need photo library access to select images containing event information.</string>
+    <string>需要访问相册以选择包含日程信息的图片。</string>
     <key>NSCalendarsUsageDescription</key>
-    <string>We need calendar access to create events from parsed image data.</string>
+    <string>需要日历权限以从图片中创建日程事件。</string>
     <key>NSRemindersUsageDescription</key>
-    <string>We need reminders access to create tasks from parsed image data.</string>
+    <string>需要提醒事项权限以从图片中创建待办任务。</string>
     <key>NSCalendarsFullAccessUsageDescription</key>
-    <string>We need full calendar access to create and manage events from your images.</string>
+    <string>需要完整的日历访问权限以创建和管理从图片解析的事件。</string>
     <key>NSRemindersFullAccessUsageDescription</key>
-    <string>We need full reminders access to create and manage tasks from your images.</string>
+    <string>需要完整的提醒事项访问权限以创建和管理从图片解析的任务。</string>
 </dict>
 </plist>
