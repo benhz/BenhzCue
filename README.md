@@ -4,15 +4,16 @@ An iPhone app that converts images (event posters, handwritten schedules, screen
 
 ## 🎯 Features
 
-- **Image to Event Parsing**: Upload or capture images containing event information
-- **Intelligent Classification**: Automatically determines whether to create Calendar events or Reminders
-- **Smart Detection**:
+- **🔐 Biometric Authentication**: Face ID / Touch ID login for enhanced security
+- **📸 Image to Event Parsing**: Upload or capture images containing event information
+- **🤖 Intelligent Classification**: Automatically determines whether to create Calendar events or Reminders
+- **🔍 Smart Detection**:
   - Conflict detection for overlapping events
   - Duplicate detection to prevent redundant entries
-- **Native Integration**: Writes directly to iOS Calendar and Reminders apps using EventKit
-- **User Confirmation**: Review and edit all parsed events before adding
-- **Undo Functionality**: Remove recently added events with one tap
-- **Privacy-First**: Images can be auto-deleted after parsing, no external data storage
+- **📱 Native Integration**: Writes directly to iOS Calendar and Reminders apps using EventKit
+- **✅ User Confirmation**: Review and edit all parsed events before adding
+- **↩️ Undo Functionality**: Remove recently added events with one tap
+- **🔒 Privacy-First**: Images can be auto-deleted after parsing, no external data storage
 
 ## 📋 Requirements
 
@@ -62,10 +63,12 @@ ImageToCalendar/
 ├── Models/
 │   └── EventModels.swift              # Data models for events
 ├── Services/
+│   ├── BiometricAuthService.swift     # Face ID/Touch ID authentication
 │   ├── DifyService.swift              # Backend API integration
 │   ├── CalendarService.swift          # EventKit for Calendar
 │   └── RemindersService.swift         # Reminders framework
 ├── Views/
+│   ├── LoginView.swift                # Biometric login screen
 │   ├── ContentView.swift              # Main upload view
 │   ├── ConfirmationView.swift         # Event review/edit UI
 │   ├── EventCardView.swift            # Individual event card
@@ -240,12 +243,23 @@ Decision rules:
 
 The app requires:
 
+- **Face ID / Touch ID**: Biometric authentication for app security
 - **Camera**: Capture event posters
 - **Photo Library**: Select existing images
 - **Calendar**: Create calendar events
 - **Reminders**: Create reminder tasks
 
 Permissions are requested only when needed (not on first launch).
+
+### Biometric Authentication
+
+On first launch, you'll be prompted to authenticate with Face ID or Touch ID. This protects your calendar data from unauthorized access. You can:
+- Use Face ID (iPhone X and newer)
+- Use Touch ID (supported iPhone/iPad models)
+- Use device passcode as fallback
+- Disable authentication in Settings if desired
+
+See [AUTHENTICATION.md](AUTHENTICATION.md) for detailed information about the login feature.
 
 ## ⚙️ Default Behaviors
 
