@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Combine
+import EventKit
 
 struct SettingsView: View {
     @EnvironmentObject var appState: AppState
